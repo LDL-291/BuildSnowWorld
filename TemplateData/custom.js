@@ -72,7 +72,8 @@
     canvas.width  = Math.floor(w * dpr * scale);
     canvas.height = Math.floor(h * dpr * scale);
 
-    sendResizeToUnity(w, h);
+    // sendResizeToUnity disabled — ResponsiveManager not wired for external calls
+    // sendResizeToUnity(w, h);
   }
 
   function sendResizeToUnity(w, h) {
