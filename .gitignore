@@ -65,16 +65,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-# Packed Addressables
-/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
-
-# Temporary auto-generated Android Assets
-/[Aa]ssets/[Ss]treamingAssets/aa.meta
-/[Aa]ssets/[Ss]treamingAssets/aa/*
-
 # Claude Code
 CLAUDE.md
 
-# Custom overlay scripts (survive Unity build exports)
-TemplateData/custom.css
-TemplateData/custom.js
+
