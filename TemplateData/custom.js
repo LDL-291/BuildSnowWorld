@@ -46,22 +46,31 @@
   function resizeCanvas() {
     if (!canvas) return;
 
-    var fs  = !!document.fullscreenElement;
-    var w   = fs ? window.innerWidth  : window.innerWidth  - 200;
-    var h   = fs ? window.innerHeight : window.innerHeight - 100;
-    var dpr = Math.min(window.devicePixelRatio || 1, CONFIG.maxPixelRatio);
-    var scale = isMobile() ? CONFIG.mobileScale : 1;
+    var mobile = isMobile();
+    var w, h;
 
+    if (mobile) {
+      // Let .unity-mobile CSS class handle layout — just read actual dimensions
+      w = window.innerWidth;
+      h = window.innerHeight;
+    } else {
+      var fs = !!document.fullscreenElement;
+      w = fs ? window.innerWidth  : window.innerWidth  - 200;
+      h = fs ? window.innerHeight : window.innerHeight - 100;
+
+      canvas.style.width  = w + 'px';
+      canvas.style.height = h + 'px';
+
+      if (container) {
+        container.style.width  = w + 'px';
+        container.style.height = h + 'px';
+      }
+    }
+
+    var dpr   = Math.min(window.devicePixelRatio || 1, CONFIG.maxPixelRatio);
+    var scale = mobile ? CONFIG.mobileScale : 1;
     canvas.width  = Math.floor(w * dpr * scale);
     canvas.height = Math.floor(h * dpr * scale);
-
-    canvas.style.width  = w + 'px';
-    canvas.style.height = h + 'px';
-
-    if (container) {
-      container.style.width  = w + 'px';
-      container.style.height = h + 'px';
-    }
 
     sendResizeToUnity(w, h);
   }
