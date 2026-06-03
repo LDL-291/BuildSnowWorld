@@ -62,8 +62,7 @@
       canvas.style.height = h + 'px';
 
       if (container) {
-        container.style.width  = w + 'px';
-        container.style.height = h + 'px';
+        container.style.width = w + 'px';
       }
     }
 
