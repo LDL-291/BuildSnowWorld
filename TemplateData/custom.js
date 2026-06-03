@@ -27,14 +27,6 @@
   wrap.appendChild(star);
   loadingBar.appendChild(wrap);
 
-  // ── Viewport meta (mobile) ────────────────────────────────────────────────
-  if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    var meta     = document.createElement('meta');
-    meta.name    = 'viewport';
-    meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-    document.head.appendChild(meta);
-  }
-
   // ── Responsive canvas (absorbs inline resizeCanvas + unity-responsive.js) ─
   var canvas    = document.getElementById('unity-canvas');
   var container = document.getElementById('unity-container');
