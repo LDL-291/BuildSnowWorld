@@ -1,8 +1,8 @@
 /* ── Canvas ─────────────────────────────────────────────── */
 #unity-canvas { background: #DDFFAA }
 
-/* ── Show footer on mobile (Unity hides it by default) ──── */
-.unity-mobile #unity-footer { display: block }
+/* ── Show footer on mobile, overlaid at bottom of canvas ── */
+.unity-mobile #unity-footer { display: block; position: absolute; bottom: 0; left: 0; width: 100%; z-index: 10; background: rgba(0,0,0,0.4) }
 
 /* ── Loading bar ────────────────────────────────────────── */
 #unity-loading-bar { max-width: 100%; box-sizing: border-box }
