@@ -3,6 +3,13 @@ name: Deploy Snow World to GCP
 on:
   push:
     branches: [main]
+    paths:
+      - 'Build/**'
+      - 'TemplateData/**'
+      - 'StreamingAssets/**'
+      - 'index.html'
+      - 'patch-build.js'
+      - 'unity-responsive.js'
   workflow_dispatch:
 
 jobs:
@@ -20,12 +27,13 @@ jobs:
           host: ${{ secrets.GCP_VM_IP }}
           username: ${{ secrets.GCP_VM_USER }}
           key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
-          source: "."
+          source: "Build/,TemplateData/,StreamingAssets/,index.html,patch-build.js,unity-responsive.js"
           target: /var/www/arghorithm/games/snow-world/
-          strip_components: 1
+          strip_components: 0
 
       - name: Smoke test
         run: |
+          sleep 3
           STATUS=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 10 https://arghorithm.com/games/snow-world/)
           [ "$STATUS" = "200" ] \
             && echo "Snow World OK (HTTP $STATUS)" \
