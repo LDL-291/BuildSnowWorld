@@ -97,7 +97,9 @@
   // ── Unity instance hook (called by index.html after createUnityInstance) ──
   window.__onUnityLoaded = function (instance) {
     unityInstance = instance;
-    resizeCanvas();
+    // Delay resize so the parent modal animation has finished
+    setTimeout(resizeCanvas, 100);
+    setTimeout(resizeCanvas, 500);
   };
 
   // ── Star interaction ──────────────────────────────────────────────────────
