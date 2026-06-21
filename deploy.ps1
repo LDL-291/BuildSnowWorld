@@ -4,7 +4,7 @@
 
 $VM_USER   = "spiralkrab"
 $VM_HOST   = "34.131.55.80"
-$SSH_KEY   = "$env:USERPROFILE\deploy_key"
+$SSH_KEY   = "C:\Users\Argho\deploy_key"
 $REMOTE    = "/var/www/arghorithm/games/snow-world"
 $LOCAL     = $PSScriptRoot
 

@@ -1,0 +1,32 @@
+name: Deploy Snow World to GCP
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Upload build to VM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Deploy to VM
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.GCP_VM_IP }}
+          username: ${{ secrets.GCP_VM_USER }}
+          key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
+          source: "."
+          target: /var/www/arghorithm/games/snow-world/
+          strip_components: 1
+
+      - name: Smoke test
+        run: |
+          STATUS=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 10 https://arghorithm.com/games/snow-world/)
+          [ "$STATUS" = "200" ] \
+            && echo "Snow World OK (HTTP $STATUS)" \
+            || (echo "Smoke test failed — HTTP $STATUS" && exit 1)
