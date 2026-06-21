@@ -1,0 +1,39 @@
+﻿{
+    "schemaVersion": 1,
+    "hmac": "",
+    "issuedAt": 1782079407,
+    "levels": [
+        {
+            "id": "level-1",
+            "displayName": "Snow World",
+            "addressableKey": "level-1",
+            "contentHash": "",
+            "minAppVersion": "",
+            "environmentKey": "env-level-1"
+        },
+        {
+            "id": "level-2",
+            "displayName": "SnowWorld",
+            "addressableKey": "level-2",
+            "contentHash": "",
+            "minAppVersion": "",
+            "environmentKey": "env-level-1"
+        },
+        {
+            "id": "level-3",
+            "displayName": "Snow World 3",
+            "addressableKey": "level-3",
+            "contentHash": "",
+            "minAppVersion": "",
+            "environmentKey": "env-level-1"
+        },
+        {
+            "id": "level-4",
+            "displayName": "Snow-World",
+            "addressableKey": "level-4",
+            "contentHash": "",
+            "minAppVersion": "",
+            "environmentKey": ""
+        }
+    ]
+}
