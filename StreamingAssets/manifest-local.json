@@ -1,6 +1,6 @@
-﻿{
+{
     "schemaVersion": 1,
-    "hmac": "",
+    "hmac": "local-dev",
     "issuedAt": 1782079407,
     "levels": [
         {
@@ -8,32 +8,56 @@
             "displayName": "Snow World",
             "addressableKey": "level-1",
             "contentHash": "",
-            "minAppVersion": "",
-            "environmentKey": "env-level-1"
+            "minAppVersion": "1.0.0",
+            "environmentKey": "env-level-1",
+            "starTarget": 800,
+            "lightningTarget": 3,
+            "goldTarget": 5,
+            "checkpointCount": 3,
+            "flightCheckpointCount": 1,
+            "timeLimitSeconds": 120.0
         },
         {
             "id": "level-2",
-            "displayName": "SnowWorld",
+            "displayName": "Snow World 2",
             "addressableKey": "level-2",
             "contentHash": "",
-            "minAppVersion": "",
-            "environmentKey": "env-level-1"
+            "minAppVersion": "1.0.0",
+            "environmentKey": "env-level-1",
+            "starTarget": 1200,
+            "lightningTarget": 4,
+            "goldTarget": 8,
+            "checkpointCount": 4,
+            "flightCheckpointCount": 2,
+            "timeLimitSeconds": 150.0
         },
         {
             "id": "level-3",
             "displayName": "Snow World 3",
             "addressableKey": "level-3",
             "contentHash": "",
-            "minAppVersion": "",
-            "environmentKey": "env-level-1"
+            "minAppVersion": "1.0.0",
+            "environmentKey": "env-level-1",
+            "starTarget": 1800,
+            "lightningTarget": 5,
+            "goldTarget": 10,
+            "checkpointCount": 5,
+            "flightCheckpointCount": 3,
+            "timeLimitSeconds": 180.0
         },
         {
             "id": "level-4",
-            "displayName": "Snow-World",
+            "displayName": "Snow World 4",
             "addressableKey": "level-4",
             "contentHash": "",
-            "minAppVersion": "",
-            "environmentKey": ""
+            "minAppVersion": "1.0.0",
+            "environmentKey": "env-level-1",
+            "starTarget": 2500,
+            "lightningTarget": 6,
+            "goldTarget": 12,
+            "checkpointCount": 6,
+            "flightCheckpointCount": 4,
+            "timeLimitSeconds": 210.0
         }
     ]
 }

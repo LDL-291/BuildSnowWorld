@@ -1,0 +1,28 @@
+/* ── Canvas ─────────────────────────────────────────────── */
+#unity-canvas { background: #DDFFAA }
+
+/* ── Show footer on mobile, overlaid at bottom of canvas ── */
+.unity-mobile #unity-footer { display: block; position: absolute; bottom: 0; left: 0; width: 100%; z-index: 10; background: rgba(0,0,0,0.4) }
+
+/* ── Loading bar ────────────────────────────────────────── */
+#unity-loading-bar { max-width: 100%; box-sizing: border-box }
+
+/* ── Logo: swap Unity default for snow-logo-dark.png ────── */
+#unity-logo { width: 466px; height: 130px; max-width: 100%; background: url('snow-logo-dark.png') no-repeat center; background-size: contain }
+
+/* ── Progress bar: center under logo, contain flash ─────── */
+#unity-progress-bar-empty { position: relative; margin-left: auto; margin-right: auto }
+#unity-progress-bar-full  { margin-top: 0 }
+
+/* ── Bar flash overlay (injected by custom.js) ──────────── */
+#bar-flash { position: absolute; top: 0; left: 0; height: 100%; width: 0; pointer-events: none; background: linear-gradient(90deg, #ffd70066, #fff, #ffd700aa); opacity: 0; border-radius: 2px }
+
+/* ── Loading star (injected by custom.js) ───────────────── */
+#load-star-wrap { text-align: center; margin-top: 12px; position: relative }
+#load-star { display: inline-block; font-size: 36px; cursor: pointer; user-select: none; animation: star-pulse 1.8s ease-in-out infinite; filter: drop-shadow(0 0 8px #ffffffbb) }
+
+/* ── Keyframes ──────────────────────────────────────────── */
+@keyframes star-pulse  { 0%,100% { transform: scale(1,1) rotate(0deg) } 40% { transform: scale(1.15,0.9) rotate(6deg) } 70% { transform: scale(0.92,1.1) rotate(-4deg) } }
+@keyframes star-squish { 0% { transform: scale(1,1) } 10% { transform: scale(1.7,0.45) } 28% { transform: scale(0.65,1.55) } 46% { transform: scale(1.3,0.78) } 62% { transform: scale(0.88,1.18) } 78% { transform: scale(1.08,0.94) } 100% { transform: scale(1,1) } }
+@keyframes logo-punch  { 0% { transform: scale(1) } 20% { transform: scale(1.06) } 55% { transform: scale(0.97) } 100% { transform: scale(1) } }
+@keyframes bar-sweep   { 0% { opacity:1; clip-path: inset(0 100% 0 0) } 55% { opacity:1; clip-path: inset(0 0% 0 0) } 100% { opacity:0; clip-path: inset(0 0% 0 0) } }

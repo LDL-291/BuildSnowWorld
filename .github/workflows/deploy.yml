@@ -7,6 +7,7 @@ on:
       - 'Build/**'
       - 'TemplateData/**'
       - 'StreamingAssets/**'
+      - 'RemoteAssets/**'
       - 'index.html'
       - 'patch-build.js'
       - 'unity-responsive.js'
@@ -27,7 +28,7 @@ jobs:
           host: ${{ secrets.GCP_VM_IP }}
           username: ${{ secrets.GCP_VM_USER }}
           key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
-          source: "Build/,TemplateData/,StreamingAssets/,index.html,patch-build.js,unity-responsive.js"
+          source: "Build/,TemplateData/,StreamingAssets/,RemoteAssets/,index.html,patch-build.js,unity-responsive.js"
           target: /var/www/arghorithm/games/snow-world/
           strip_components: 0
 
