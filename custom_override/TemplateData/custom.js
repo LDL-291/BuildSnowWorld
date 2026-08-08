@@ -47,8 +47,8 @@
     }
 
     var fs = !!document.fullscreenElement;
-    var w  = fs ? window.innerWidth  : window.innerWidth  - 200;
-    var h  = fs ? window.innerHeight : window.innerHeight - 100;
+    w = fs ? window.innerWidth  : window.innerWidth  - 200;
+    h = fs ? window.innerHeight : window.innerHeight - 100;
 
     canvas.style.width  = w + 'px';
     canvas.style.height = h + 'px';

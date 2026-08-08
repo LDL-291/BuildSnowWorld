@@ -2,9 +2,9 @@
 # Run from: D:\GameRepository\PortfolioBuilds\BuildSnowWorld\
 # Usage: .\deploy.ps1
 
-$VM_USER   = "spiralkrab"
-$VM_HOST   = "34.131.55.80"
-$SSH_KEY   = "C:\Users\Argho\deploy_key"
+$VM_USER   = "arghorithm"
+$VM_HOST   = "34.126.210.223"
+$SSH_KEY   = "D:\Assets\Secrets\gcp-pair"
 $REMOTE    = "/var/www/arghorithm/games/snow-world"
 $LOCAL     = $PSScriptRoot
 

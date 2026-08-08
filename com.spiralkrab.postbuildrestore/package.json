@@ -1,0 +1,10 @@
+{
+  "name": "com.spiralkrab.postbuildrestore",
+  "version": "1.0.0",
+  "displayName": "Post Build Restore",
+  "description": "Restores custom override files into the WebGL build output after every build. Place files to preserve in _custom_overrides/ at the project root.",
+  "unity": "2021.3",
+  "author": {
+    "name": "SpiralKrab"
+  }
+}

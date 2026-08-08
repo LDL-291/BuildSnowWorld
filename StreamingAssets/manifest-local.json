@@ -15,7 +15,12 @@
             "goldTarget": 5,
             "checkpointCount": 3,
             "flightCheckpointCount": 1,
-            "timeLimitSeconds": 120.0
+            "timeLimitSeconds": 60.0,
+            "starsAvailable": 14,
+            "goldAvailable": 0,
+            "lightningAvailable": 0,
+            "checkpointsAvailable": 12,
+            "starsRequired": 14
         },
         {
             "id": "level-2",
@@ -29,7 +34,12 @@
             "goldTarget": 8,
             "checkpointCount": 4,
             "flightCheckpointCount": 2,
-            "timeLimitSeconds": 150.0
+            "timeLimitSeconds": 80.0,
+            "starsAvailable": 14,
+            "goldAvailable": 0,
+            "lightningAvailable": 0,
+            "checkpointsAvailable": 12,
+            "starsRequired": 14
         },
         {
             "id": "level-3",
@@ -43,7 +53,12 @@
             "goldTarget": 10,
             "checkpointCount": 5,
             "flightCheckpointCount": 3,
-            "timeLimitSeconds": 180.0
+            "timeLimitSeconds": 100.0,
+            "starsAvailable": 14,
+            "goldAvailable": 0,
+            "lightningAvailable": 0,
+            "checkpointsAvailable": 12,
+            "starsRequired": 14
         },
         {
             "id": "level-4",
@@ -57,7 +72,12 @@
             "goldTarget": 12,
             "checkpointCount": 6,
             "flightCheckpointCount": 4,
-            "timeLimitSeconds": 210.0
+            "timeLimitSeconds": 100.0,
+            "starsAvailable": 27,
+            "goldAvailable": 0,
+            "lightningAvailable": 0,
+            "checkpointsAvailable": 13,
+            "starsRequired": 27
         }
     ]
 }

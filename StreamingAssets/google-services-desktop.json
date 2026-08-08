@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "380381649321",
+    "project_id": "snowworld-6b30b",
+    "storage_bucket": "snowworld-6b30b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380381649321:android:3c5260427ecd8a9c370cb8",
+        "android_client_info": {
+          "package_name": "com.Arghorithm.snowWorld"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByaok7ED0kjJ06VrWBnK__m21G71X3RAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -46,16 +46,18 @@ if (!html.includes(cssTag)) {
   console.log('✔ Injected custom.css link');
 } else { console.log('  custom.css already present'); }
 
+// Anchor on 'loadingBar.style.display = "none";' inside the .then() callback —
+// works across Unity template versions (the older 'unityInstance.SetFullscreen(1);'
+// anchor doesn't exist in Unity 6's default WebGL template and silently no-ops,
+// which is why this hook kept vanishing after every rebuild).
+const thenAnchor = 'loadingBar.style.display = "none";';
 if (!html.includes(hookLine)) {
-  html = html.replace(
-    'unityInstance.SetFullscreen(1);',
-    'unityInstance.SetFullscreen(1);\n                };\n                ' + hookLine + '\n              }).catch'
-  );
-  html = html.replace(
-    ';\n                };\n                ' + hookLine + '\n              }).catch\n              }).catch',
-    ';\n                };\n                ' + hookLine + '\n              }).catch'
-  );
-  console.log('✔ Injected __onUnityLoaded hook');
+  if (html.includes(thenAnchor)) {
+    html = html.replace(thenAnchor, thenAnchor + '\n          ' + hookLine);
+    console.log('✔ Injected __onUnityLoaded hook');
+  } else {
+    console.warn('✘ __onUnityLoaded hook anchor not found — hook NOT injected. Check index.html manually.');
+  }
 } else { console.log('  __onUnityLoaded hook already present'); }
 
 if (!html.includes(jsTag)) {

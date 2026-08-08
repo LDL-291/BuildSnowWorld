@@ -1,5 +1,7 @@
 <linker>
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CharacterStateConfig" preserve="all" />
+    <type fullname="ExternalHitCollision" preserve="all" />
     <type fullname="FlightCheckpointCollectable" preserve="all" />
     <type fullname="GameCheckpointCollectable" preserve="all" />
     <type fullname="GoalObjectController" preserve="all" />
@@ -9,12 +11,18 @@
     <type fullname="LevelObjectMarker" preserve="all" />
     <type fullname="LightingCollectable" preserve="all" />
     <type fullname="LocomotionConfig" preserve="all" />
+    <type fullname="MyFinalSkill.Player.CosmeticSlotAnchors" preserve="all" />
     <type fullname="PenguinCharacter" preserve="all" />
+    <type fullname="PlayerInteractionDialogue" preserve="all" />
+    <type fullname="PresentCollectable" preserve="all" />
     <type fullname="ReindeerController" preserve="all" />
     <type fullname="snowmanComponent" preserve="all" />
     <type fullname="SpeedUpIndicatorController" preserve="all" />
     <type fullname="StarCollectable" preserve="all" />
+    <type fullname="TreePropController" preserve="all" />
+    <type fullname="PresentCollectable/EmissionOption" preserve="nothing" serialized="true" />
     <type fullname="LocomotionTransitionEntry" preserve="nothing" serialized="true" />
+    <type fullname="WeightedVoiceLine" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
     <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
@@ -38,11 +46,13 @@
   <assembly fullname="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.AnimationClip" preserve="all" />
     <type fullname="UnityEngine.Animations.LookAtConstraint" preserve="all" />
+    <type fullname="UnityEngine.Animations.ParentConstraint" preserve="all" />
     <type fullname="UnityEngine.Animator" preserve="all" />
     <type fullname="UnityEngine.RuntimeAnimatorController" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.AudioClip" preserve="all" />
+    <type fullname="UnityEngine.AudioSource" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.GameObject" preserve="all" />

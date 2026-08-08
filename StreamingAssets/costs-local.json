@@ -1,0 +1,12 @@
+{
+  "playCost": 3,
+  "gameOverRetryCosts": [3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047],
+  "gameOverContinueCostMultiplier": 10,
+  "reviveBaseCost": 3,
+  "levelCompleteRetryCost": 3,
+  "levelCompleteContinueCostByStars": [
+    { "stars": 5, "cost": 1 },
+    { "stars": 3, "cost": 2 },
+    { "stars": 1, "cost": 3 }
+  ]
+}
