@@ -6,6 +6,7 @@
     <title>Unity Web Player | snow-world</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="stylesheet" href="TemplateData/custom.css">
     <link rel="manifest" href="manifest.webmanifest">
   </head>
   <body>
@@ -57,12 +58,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/BuildSnowWorld.loader.js";
+      var loaderUrl = buildUrl + "/snow-world.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/BuildSnowWorld.data.br",
-        frameworkUrl: buildUrl + "/BuildSnowWorld.framework.js.br",
-        codeUrl: buildUrl + "/BuildSnowWorld.wasm.br",
+        dataUrl: buildUrl + "/snow-world.data.br",
+        frameworkUrl: buildUrl + "/snow-world.framework.js.br",
+        codeUrl: buildUrl + "/snow-world.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Arghorithm",
         productName: "snow-world",
@@ -101,11 +102,13 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
+          if (window.__onUnityLoaded) window.__onUnityLoaded(unityInstance);
         }).catch((message) => {
           alert(message);
         });
       };
       document.body.appendChild(script);
     </script>
+      <script src="TemplateData/custom.js"></script>
   </body>
 </html>

@@ -1,9 +1,9 @@
 const cacheName = "Arghorithm-snow-world-1.0.2";
 const contentToCache = [
-    "Build/BuildSnowWorld.loader.js",
-    "Build/BuildSnowWorld.framework.js.br",
-    "Build/BuildSnowWorld.data.br",
-    "Build/BuildSnowWorld.wasm.br",
+    "Build/snow-world.loader.js",
+    "Build/snow-world.framework.js.br",
+    "Build/snow-world.data.br",
+    "Build/snow-world.wasm.br",
     "TemplateData/style.css"
 
 ];
