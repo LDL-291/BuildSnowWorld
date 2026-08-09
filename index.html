@@ -6,7 +6,6 @@
     <title>Unity Web Player | snow-world</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <link rel="stylesheet" href="TemplateData/custom.css">
     <link rel="manifest" href="manifest.webmanifest">
   </head>
   <body>
@@ -102,13 +101,11 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
-          if (window.__onUnityLoaded) window.__onUnityLoaded(unityInstance);
         }).catch((message) => {
           alert(message);
         });
       };
       document.body.appendChild(script);
     </script>
-      <script src="TemplateData/custom.js"></script>
   </body>
 </html>
