@@ -8,6 +8,9 @@
     maxPixelRatio   : 2,
     mobileScale     : 0.8,
     resizeDebounce  : 10,
+    // Widest the game may ever be, as width / height — the portrait reference layout
+    // (206 x 394, from the Level Complete reference). Any wider window, tablet or landscape phone gets pillarboxed to this.
+    maxAspect       : 206 / 394,
   };
 
   var unityInstance = null;
@@ -42,7 +45,21 @@
     var w, h;
 
     if (mobile) {
-      // Let .unity-mobile CSS and Unity itself handle everything on mobile
+      // Let .unity-mobile CSS and Unity itself handle everything on mobile — except when the
+      // screen is wider than the reference aspect (landscape phone / tablet), where the canvas
+      // is pillarboxed to the reference width and centred.
+      var mw = window.innerWidth, mh = window.innerHeight;
+      if (mw / mh > CONFIG.maxAspect) {
+        var capped = Math.floor(mh * CONFIG.maxAspect);
+        canvas.style.width  = capped + 'px';
+        canvas.style.height = mh + 'px';
+        canvas.style.marginLeft = canvas.style.marginRight = 'auto';
+        if (container) {
+          container.style.width = capped + 'px';
+          container.style.left = container.style.right = '0';
+          container.style.marginLeft = container.style.marginRight = 'auto';
+        }
+      }
       return;
     }
 
@@ -50,11 +67,17 @@
     w = fs ? window.innerWidth  : window.innerWidth  - 200;
     h = fs ? window.innerHeight : window.innerHeight - 100;
 
+    // Never wider than the reference aspect: shrink the width, keep the height, centre it.
+    if (w / h > CONFIG.maxAspect) w = Math.floor(h * CONFIG.maxAspect);
+
     canvas.style.width  = w + 'px';
     canvas.style.height = h + 'px';
+    canvas.style.marginLeft = canvas.style.marginRight = 'auto';
 
     if (container) {
       container.style.width = w + 'px';
+      container.style.left = container.style.right = '0';
+      container.style.marginLeft = container.style.marginRight = 'auto';
     }
 
     // sendResizeToUnity disabled — ResponsiveManager not wired for external calls

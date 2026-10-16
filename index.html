@@ -3,13 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | snow-world</title>
+    <title>Snow World – Free Online Sled Physics Game | Arghorithm</title>
+    <meta name="description" content="Play Snow World, a free browser-based sled physics game by Arghorithm. Race down snowy slopes, collect stars, and climb the online leaderboard — no download required.">
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="stylesheet" href="TemplateData/custom.css">
     <link rel="manifest" href="manifest.webmanifest">
+      <meta name="google-adsense-account" content="ca-pub-2272798159327207">
+    <script>
+      (function () {
+        var consent = localStorage.getItem('ad_consent');
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.requestNonPersonalizedAds = consent === 'personalized' ? 0 : 1;
+      })();
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2272798159327207" crossorigin="anonymous"></script>
   </head>
   <body>
+    <!-- ADSENSE-CONTENT-START -->
     <div id="unity-container">
       <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
@@ -20,6 +31,23 @@
       </div>
       <div id="unity-warning"> </div>
     </div>
+    <header id="page-header">
+      <h1>Snow World</h1>
+      <p>A free physics-based sledding game. Race down the mountain, dodge obstacles, collect stars and lightning bolts, and set your best time on the global leaderboard.</p>
+    </header>
+    <footer id="page-footer">
+      <h2>How to play</h2>
+      <p>Steer your sled using the on-screen controls or arrow keys, collect stars along the track, and avoid crashing to keep your run alive. Compare your score against other players on the leaderboard after each run.</p>
+      <p><a href="https://arghorithm.com/">&larr; Back to Arghorithm</a> &nbsp;&middot;&nbsp; <a href="https://arghorithm.com/privacy-policy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="https://arghorithm.com/terms-of-service.html">Terms of Service</a></p>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2272798159327207"
+           data-ad-slot="5463795806"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </footer>
+    <!-- ADSENSE-CONTENT-END -->
     <script>
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
@@ -57,14 +85,29 @@
         updateBannerVisibility();
       }
 
-      var buildUrl = "Build";
+      var buildUrl = "Build/" + (function () {
+        // Pick the GPU texture format this browser can sample natively: ASTC on mobile, DXT (S3TC) on
+        // desktop, ETC2 as the fallback. The matching player build lives in Build/<format>/.
+        try {
+          var c = document.createElement('canvas');
+          var gl = c.getContext('webgl2') || c.getContext('webgl');
+          if (!gl) return 'etc2';
+          var has = function (n) { return !!(gl.getExtension(n) || gl.getExtension('WEBKIT_' + n) || gl.getExtension('MOZ_' + n)); };
+          var mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+          if (mobile && has('WEBGL_compressed_texture_astc')) return 'astc';
+          if (has('WEBGL_compressed_texture_s3tc')) return 'dxt';
+          if (has('WEBGL_compressed_texture_astc')) return 'astc';
+          return 'etc2';
+        } catch (e) { return 'etc2'; }
+      })();
+      window.__texFmt = buildUrl.split('/')[1]; // read by the game to pick the matching Addressables set
       var loaderUrl = buildUrl + "/snow-world.loader.js";
       var config = {
         arguments: [],
         dataUrl: buildUrl + "/snow-world.data.br",
         frameworkUrl: buildUrl + "/snow-world.framework.js.br",
         codeUrl: buildUrl + "/snow-world.wasm.br",
-        streamingAssetsUrl: "StreamingAssets",
+        streamingAssetsUrl: buildUrl + "/StreamingAssets",
         companyName: "Arghorithm",
         productName: "snow-world",
         productVersion: "1.0.2",
@@ -93,6 +136,7 @@
       }
 
 
+      canvas.style.background = "url('" + buildUrl + "/snow-world.jpg') center / cover";
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");

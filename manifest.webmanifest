@@ -3,7 +3,8 @@
     "short_name": "snow-world",
     "start_url": "index.html",
     "display": "fullscreen",
-    "background_color": "#231F20",
+    "orientation": "portrait",
+    "background_color": "#FFFFFF",
     "theme_color": "#000",
     "description": "",
     "icons": [{

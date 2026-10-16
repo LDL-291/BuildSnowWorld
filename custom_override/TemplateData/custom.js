@@ -8,6 +8,9 @@
     maxPixelRatio   : 2,
     mobileScale     : 0.8,
     resizeDebounce  : 10,
+    // Widest the game may ever be, as width / height — the portrait reference layout
+    // (206 x 394, from the Level Complete reference). Any wider window, tablet or landscape phone gets pillarboxed to this.
+    maxAspect       : 206 / 394,
   };
 
   var unityInstance = null;
@@ -32,7 +35,26 @@
   var container = document.getElementById('unity-container');
 
   function isMobile() {
-    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    // iPadOS reports a desktop (Macintosh) user agent but has touch points.
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+           (/Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+  }
+
+  // Portrait-only on touch devices: browsers cannot lock orientation outside fullscreen / installed apps
+  // (iOS has no lock at all), so landscape shows a rotate prompt (see #rotate-overlay in custom.css) and
+  // Android Chrome additionally gets a best-effort lock once the page is fullscreen.
+  if (isMobile()) {
+    var rot = document.createElement('div');
+    rot.id = 'rotate-overlay';
+    rot.innerHTML = '<div class="rot-icon">&#128241;</div><div class="rot-text">Please rotate your device<br>to portrait to play Snow World</div>';
+    document.body.appendChild(rot);
+    document.addEventListener('fullscreenchange', function () {
+      try {
+        if (document.fullscreenElement && screen.orientation && screen.orientation.lock) {
+          screen.orientation.lock('portrait').catch(function () {});
+        }
+      } catch (e) { /* unsupported (iOS) - the overlay covers it */ }
+    });
   }
 
   function resizeCanvas() {
@@ -42,7 +64,21 @@
     var w, h;
 
     if (mobile) {
-      // Let .unity-mobile CSS and Unity itself handle everything on mobile
+      // Let .unity-mobile CSS and Unity itself handle everything on mobile — except when the
+      // screen is wider than the reference aspect (landscape phone / tablet), where the canvas
+      // is pillarboxed to the reference width and centred.
+      var mw = window.innerWidth, mh = window.innerHeight;
+      if (mw / mh > CONFIG.maxAspect) {
+        var capped = Math.floor(mh * CONFIG.maxAspect);
+        canvas.style.width  = capped + 'px';
+        canvas.style.height = mh + 'px';
+        canvas.style.marginLeft = canvas.style.marginRight = 'auto';
+        if (container) {
+          container.style.width = capped + 'px';
+          container.style.left = container.style.right = '0';
+          container.style.marginLeft = container.style.marginRight = 'auto';
+        }
+      }
       return;
     }
 
@@ -50,11 +86,17 @@
     w = fs ? window.innerWidth  : window.innerWidth  - 200;
     h = fs ? window.innerHeight : window.innerHeight - 100;
 
+    // Never wider than the reference aspect: shrink the width, keep the height, centre it.
+    if (w / h > CONFIG.maxAspect) w = Math.floor(h * CONFIG.maxAspect);
+
     canvas.style.width  = w + 'px';
     canvas.style.height = h + 'px';
+    canvas.style.marginLeft = canvas.style.marginRight = 'auto';
 
     if (container) {
       container.style.width = w + 'px';
+      container.style.left = container.style.right = '0';
+      container.style.marginLeft = container.style.marginRight = 'auto';
     }
 
     // sendResizeToUnity disabled — ResponsiveManager not wired for external calls
